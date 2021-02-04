@@ -12,7 +12,6 @@
 <#--<span><img id="bild" src="https://luxfon.com/pic/201203/1920x1080/luxfon.com-364.jpg">-->
 <div>
     <h1>ROUND ${round}</h1>
-
 </div>
 <div style="display: flex; justify-content: center;align-content: center; height: 100%">
     <div class="wrap" style="width: 500px; height: 500px;background: green">
