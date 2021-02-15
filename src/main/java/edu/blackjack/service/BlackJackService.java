@@ -3,10 +3,12 @@ package edu.blackjack.service;
 import edu.blackjack.data.Data;
 import edu.blackjack.model.Card;
 import edu.blackjack.model.Player;
+import edu.blackjack.model.Round;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +25,7 @@ public class BlackJackService {
     public int counterPlayer = 0;
     public int counterPC = 0;
     public int round = 1;
+    public int roundCounter = 1;
 
     @PostConstruct
     public void init() {
@@ -53,7 +56,7 @@ public class BlackJackService {
         deck = data.getDeck();
         counterPC = 0;
         counterPlayer = 0;
-        round = 1;
+        roundCounter = 1;
     }
     public int getDeckSize(){
         return deck.size();
