@@ -62,6 +62,7 @@ public class WebController {
     }
     @RequestMapping("/pick")
     public String pick(Model model){
+        round = RoundService.initRound();
         List<Card> delivery = service.getCardList();
         int sum = delivery.stream().mapToInt(card-> card.getValue()).sum();
 
@@ -69,10 +70,10 @@ public class WebController {
             return "redirect:/web/cards/stop";
         }
         int getDeckSize = service.getDeck().size();
-        int roundCounter = service.roundCounter;
+        int roundCounter = service.round;
         round.setDelivery(delivery);
 
-        model.addAttribute("round",roundCounter);
+        model.addAttribute("round",round);
         model.addAttribute("sizeDeck");
         model.addAttribute("sum", sum);
         model.addAttribute("delivery",delivery);
@@ -90,12 +91,15 @@ public class WebController {
          int counterPC = service.counterPC;
          String score = "" + counterPlayer + ":" + counterPC;
          int roundCounter = service.roundCounter;
+        System.out.println(delivery);
 
         /*round.setDeliveryPC(forPC);*/
         round.setFinish(LocalDateTime.now());
         if (message.equals("You are Winnner")) round.setWin(true);
         if (message.equals("You are losser")) round.setWin(false);
         round.setScore(score);
+        round.setDelivery(delivery);
+        round.setDeliveryPC(forPC);
         roundService.create(round);
 
         model.addAttribute("round",roundCounter);

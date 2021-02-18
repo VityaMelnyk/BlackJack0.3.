@@ -1,11 +1,14 @@
 package edu.blackjack.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import sun.rmi.server.LoaderHandler;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Document
 public class Round {
+    @Id
     private String id;
     private String userName;
     private List<Card> delivery;
